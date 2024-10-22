@@ -1,4 +1,4 @@
-# sample_app
+# HackathonX_App
 
 A new Flutter project.
 
