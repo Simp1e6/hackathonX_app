@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // List of widget pages to show
   static const List<Widget> _pages = <Widget>[
-    Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
+    HomePage(), // Custom HomePage widget
     Map(title: 'Map'),
     ForumCommunity(title: 'Forum Community'),
     Profile(title: 'Profile Page'),
@@ -112,3 +112,92 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+// Custom Home Page Widget
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0), // Horizontal padding to keep button away from the sides
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+          children: [
+            const SizedBox(height: 10),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                backgroundColor: const Color.fromARGB(255, 243, 205, 92),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                minimumSize: const Size(double.infinity, 70),
+              ),
+              onPressed: () {
+                // Handle button press
+                print('Button Pressed!');
+                // Add any functionality you want for this button
+              },
+              child: Row(
+                children: [
+                  const Icon(Icons.star, size: 50),
+                  const SizedBox(width: 10),
+                  Flexible(
+                    child: Text(
+                      'Hungry Point: 100',
+                      style: const TextStyle(fontSize: 30, overflow: TextOverflow.ellipsis),
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text('Announcement', style: TextStyle(fontSize: 20)),
+            ),
+            const SizedBox(height: 10),
+            // Scrollable list of rectangle-shaped containers
+            Expanded(
+              child: ListView(
+                children: List.generate(8, (index) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 5), // Spacing between rectangles
+                    padding: const EdgeInsets.all(20), // Padding inside the rectangle
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 243, 205, 92), // Background color of the rectangle
+                      borderRadius: BorderRadius.circular(10), // Rounded corners
+                    ),
+                    child: Row( // Using Row to place image beside text
+                      children: [
+                        // Image widget beside the description
+                        Image.network(
+                          'https://via.placeholder.com/50', // Replace with your image URL
+                          width: 50, // Set the width of the image
+                          height: 50, // Set the height of the image
+                          fit: BoxFit.cover, // Maintain aspect ratio
+                        ),
+                        const SizedBox(width: 10), // Space between image and text
+                        Expanded( // Make sure text takes remaining space
+                          child: Text(
+                            'Announcement ${index + 1}: This is a description of the announcement content here.',
+                            style: const TextStyle(fontSize: 16, color: Color.fromARGB(255, 0, 0, 0)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
