@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 
-class profile extends StatelessWidget {
+class Profile extends StatelessWidget {  // Renamed 'profile' to 'Profile'
   final String title;
 
-  const profile({super.key, required this.title});
+  const Profile({super.key, required this.title});
 
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'This is the $title',
-          style: const TextStyle(fontSize: 24),
-        ),
+      appBar: AppBar(
+        title: Text(title),  // Optional: Added AppBar to display the title
       ),
+      body: Center(
+        child: Image.network(
+            'https://freesvg.org/img/abstract-user-flat-4.png',
+            width: 150,
+            height: 150,
+      ),
+      
+    ),
     );
   }
 }
+
