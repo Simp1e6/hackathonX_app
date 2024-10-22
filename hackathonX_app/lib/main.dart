@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'map.dart'; // Import your map page file here
-import 'forumCommunity.dart'; // Import your forum community page file here
-import 'profile.dart'; // Import your profile page file here
+import 'register.dart'; // Import your register page
+import 'login.dart'; //Import login page
+import 'map.dart'; // Import your map page file
+import 'forumCommunity.dart'; // Import your forum community page file
+import 'profile.dart'; // Import your profile page file
+import 'forget_password.dart'; // Import forget password page file
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +21,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 215, 179, 102)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Hungry Saver'),
+      initialRoute: '/login', // Start with the login page
+      routes: {
+        '/login': (context) => const LoginPage(), // Login Page
+        '/register': (context) => const RegisterPage(), // Register Page
+        '/forget_password': (context) => const ForgetPasswordPage(), // Forget Password Page
+        '/home': (context) => const MyHomePage(title: 'Hungry Saver'), // Home Page after login
+      },
       debugShowCheckedModeBanner: false,
     );
   }
@@ -41,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
     Map(title: 'Map'),
     ForumCommunity(title: 'Forum Community'),
-    profile(title: 'Profile Page'),
+    Profile(title: 'Profile Page'),
   ];
 
   // This method is triggered when an item is tapped
