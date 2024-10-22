@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'register.dart'; // Import your register page
-import 'login.dart'; //Import login page
+import 'login.dart'; // Import login page
 import 'map.dart'; // Import your map page file
 import 'forumCommunity.dart'; // Import your forum community page file
 import 'profile.dart'; // Import your profile page file
@@ -66,6 +66,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {
+              // Handle notification button press
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              // Handle setting button press
+            },
+          ),
+        ],
       ),
       body: IndexedStack(
         index: _selectedIndex,
