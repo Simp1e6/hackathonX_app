@@ -10,16 +10,74 @@ class Profile extends StatelessWidget {  // Renamed 'profile' to 'Profile'
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),  // Optional: Added AppBar to display the title
+        title: Text(''),  // Optional: Added AppBar to display the title
       ),
       body: Center(
-        child: Image.network(
+        child: Column(
+          children: [
+            Image.network(
             'https://freesvg.org/img/abstract-user-flat-4.png',
-            width: 150,
-            height: 150,
+              width: 150,
+              height: 150,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              print('Edit is pressed');
+            },
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12), // Rounded corners
+              ),
+            ),
+            child: Text('Edit'),
+          ),
+          SizedBox(height: 10,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,  // Align text to the left
+              children: [
+                Text(
+                  'Name: ABC',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Phone Number: 012-3456789',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Email: abc123@gmail.com',
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Current address: 123, Jalan Universiti,\nTaman Universiti,\n83000 Batu Pahat, Johor.',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
+                        ),
+            ),
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () {
+              print('Log Out');
+            },
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12), // Rounded corners
+              ),
+            ),
+            child: Text('Log out'),
+          ),
+          ],
+        ),
       ),
-      
-    ),
     );
   }
 }
