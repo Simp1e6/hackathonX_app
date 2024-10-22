@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'secondPage.dart'; // Import your second page file here
-//import 'profilePage.dart'; // Import your profile page file here
-//import 'settingsPage.dart'; // Import your settings page file here
+import 'map.dart'; // Import your map page file here
+import 'forumCommunity.dart'; // Import your forum community page file here
+import 'profile.dart'; // Import your profile page file here
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 215, 179, 102)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Hungry Saver'),
@@ -39,9 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
   // List of widget pages to show
   static const List<Widget> _pages = <Widget>[
     Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
-    secondPage(title: 'Search Page'),  // Your custom second page
-    //ProfilePage(title: 'Profile Page'), // Your custom profile page
-    //SettingsPage(title: 'Settings Page'), // Your custom settings page
+    Map(title: 'Map'),
+    ForumCommunity(title: 'Forum Community'),
+    profile(title: 'Profile Page'),
   ];
 
   // This method is triggered when an item is tapped
@@ -71,16 +71,16 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.map_sharp),
+            label: 'Map',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.forum_outlined),
+            label: 'Forum',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
           ),
         ],
         selectedItemColor: Colors.blue, // Change color for the selected item

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class secondPage extends StatelessWidget {
+class ForumCommunity extends StatelessWidget {
   final String title;
 
-  const secondPage({super.key, required this.title});
+  const ForumCommunity({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
