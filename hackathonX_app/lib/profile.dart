@@ -1,84 +1,96 @@
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {  // Renamed 'profile' to 'Profile'
+class Profile extends StatelessWidget {
   final String title;
 
   const Profile({super.key, required this.title});
 
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(''),  // Optional: Added AppBar to display the title
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Image.network(
-            'https://freesvg.org/img/abstract-user-flat-4.png',
-              width: 150,
-              height: 150,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              print('Edit is pressed');
-            },
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12), // Rounded corners
-              ),
-            ),
-            child: Text('Edit'),
-          ),
-          SizedBox(height: 10,),
+      body: Stack(
+        children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 16.0), // Padding to position other content below the AppBar
             child: Center(
               child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,  // Align text to the left
-              children: [
-                Text(
-                  'Name: ABC',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Phone Number: 012-3456789',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Email: abc123@gmail.com',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Current address: 123, Jalan Universiti,\nTaman Universiti,\n83000 Batu Pahat, Johor.',
-                  style: TextStyle(fontSize: 20),
-                ),
-              ],
+                children: [
+                  SizedBox(height: 50), // Extra spacing to move content down below the icon
+                  Image.network(
+                    'https://freesvg.org/img/abstract-user-flat-4.png',
+                    width: 150,
+                    height: 150,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Edit is pressed');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // Rounded corners
+                      ),
+                    ),
+                    child: Text('Edit'),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Name: ABC',
+                          style: TextStyle(fontSize: 20),
                         ),
-            ),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {
-              print('Log Out');
-            },
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12), // Rounded corners
+                        SizedBox(height: 10),
+                        Text(
+                          'Phone Number: 012-3456789',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Email: abc123@gmail.com',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Current address: 123, Jalan Universiti,\nTaman Universiti,\n83000 Batu Pahat, Johor.',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('Log Out');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // Rounded corners
+                      ),
+                    ),
+                    child: Text('Log out'),
+                  ),
+                ],
               ),
             ),
-            child: Text('Log out'),
           ),
-          ],
-        ),
+          Positioned(
+            top: 10, // Position the icon below the AppBar
+            right: 16, // Align the icon to the right
+            child: Icon(
+              Icons.settings,
+              size: 50,
+              color: const Color.fromARGB(255, 0, 0, 0), // Optional color for the icon
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-
