@@ -15,7 +15,7 @@ class Profile extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 50), // Extra spacing to move content down below the icon
+                  SizedBox(height: 20), // Extra spacing to move content down below the icon
                   Image.network(
                     'https://freesvg.org/img/abstract-user-flat-4.png',
                     width: 150,
@@ -78,15 +78,6 @@ class Profile extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          ),
-          Positioned(
-            top: 10, // Position the icon below the AppBar
-            right: 16, // Align the icon to the right
-            child: Icon(
-              Icons.settings,
-              size: 50,
-              color: const Color.fromARGB(255, 0, 0, 0), // Optional color for the icon
             ),
           ),
         ],
