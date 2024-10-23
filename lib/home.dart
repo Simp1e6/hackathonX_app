@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathonX_app/constant/string.dart';
 import 'map.dart'; // Import your map page file
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_sharp),
+            icon: Icon(Icons.location_on_outlined),
             label: 'Map',
           ),
           BottomNavigationBarItem(
@@ -89,49 +89,127 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0), // Horizontal padding to keep button away from the sides
+    return Scaffold(
+      backgroundColor: Colors.yellow[50], // Background color matching your image
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 10),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                backgroundColor: const Color.fromARGB(255, 243, 205, 92),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+            // Greeting and Name
+            const Text(
+              'Hi, ABC',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+
+            // Claims and Rewards Section
+            Row(
+              children: [
+                // Claims Box
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.yellow[200],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Column(
+                      children: [
+                        Icon(Icons.restaurant, size: 40, color: Colors.black54),
+                        SizedBox(height: 10),
+                        Text(
+                          '3 Claims',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                minimumSize: const Size(double.infinity, 70),
+                const SizedBox(width: 10),
+
+                // Rewards Box
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.yellow[200],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Column(
+                      children: [
+                        Row(
+                        children: [
+                          Icon(Icons.wallet_giftcard, size: 40, color: Colors.black54),
+                          SizedBox(width: 10), // Add spacing between the icon and text
+                          Text(
+                            'Rewards',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                        Divider(thickness: 2, color: Colors.black54),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  '2',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text('Vouchers'),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  '20',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text('Points'),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+
+            // Search Box
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.grey),
               ),
-              onPressed: () {
-                // Handle button press
-                if (kDebugMode) {
-                  print('Button Pressed!');
-                }
-                // Add any functionality you want for this button
-              },
               child: const Row(
                 children: [
-                  Icon(Icons.star, size: 50),
+                  Icon(Icons.search, color: Colors.black54),
                   SizedBox(width: 10),
-                  Flexible(
-                    child: Text(
-                      'Hungry Point: 100',
-                      style: TextStyle(fontSize: 30, overflow: TextOverflow.ellipsis),
-                      maxLines: 1,
-                      textAlign: TextAlign.center,
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'What do you need to know?',
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Announcement', style: TextStyle(fontSize: 20)),
-            ),
+
             const SizedBox(height: 10),
             // Scrollable list of rectangle-shaped containers
             Expanded(
