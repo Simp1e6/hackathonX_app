@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 215, 179, 102)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFD7B366)),
         useMaterial3: true,
       ),
       initialRoute: '/login', // Start with the login page
