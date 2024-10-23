@@ -1,42 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'register.dart'; // Import your register page
-import 'login.dart'; // Import login page
+import 'package:hackathonX_app/constant/string.dart';
 import 'map.dart'; // Import your map page file
-import 'forumCommunity.dart'; // Import your forum community page file
+import 'forum_community.dart'; // Import your forum community page file
 import 'profile.dart'; // Import your profile page file
-import 'forget_password.dart'; // Import forget password page file
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 215, 179, 102)),
-        useMaterial3: true,
-      ),
-      initialRoute: '/login', // Start with the login page
-      routes: {
-        '/login': (context) => const LoginPage(), // Login Page
-        '/register': (context) => const RegisterPage(), // Register Page
-        '/forget_password': (context) => const ForgetPasswordPage(), // Forget Password Page
-        '/home': (context) => const MyHomePage(title: 'Hungry Saver'), // Home Page after login
-      },
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -65,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text(kHomeTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
@@ -137,17 +107,19 @@ class HomePage extends StatelessWidget {
               ),
               onPressed: () {
                 // Handle button press
-                print('Button Pressed!');
+                if (kDebugMode) {
+                  print('Button Pressed!');
+                }
                 // Add any functionality you want for this button
               },
-              child: Row(
+              child: const Row(
                 children: [
-                  const Icon(Icons.star, size: 50),
-                  const SizedBox(width: 10),
+                  Icon(Icons.star, size: 50),
+                  SizedBox(width: 10),
                   Flexible(
                     child: Text(
                       'Hungry Point: 100',
-                      style: const TextStyle(fontSize: 30, overflow: TextOverflow.ellipsis),
+                      style: TextStyle(fontSize: 30, overflow: TextOverflow.ellipsis),
                       maxLines: 1,
                       textAlign: TextAlign.center,
                     ),
@@ -156,7 +128,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text('Announcement', style: TextStyle(fontSize: 20)),
             ),
@@ -176,7 +148,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         // Image widget beside the description
                         Image.network(
-                          'https://via.placeholder.com/50', // Replace with your image URL
+                          'https://placehold.co/50/png', // Replace with your image URL
                           width: 50, // Set the width of the image
                           height: 50, // Set the height of the image
                           fit: BoxFit.cover, // Maintain aspect ratio

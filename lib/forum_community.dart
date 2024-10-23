@@ -6,16 +6,15 @@ class ForumCommunity extends StatefulWidget {
   const ForumCommunity({super.key, required this.title});
 
   @override
-  _ForumCommunityState createState() => _ForumCommunityState();
+  State<ForumCommunity> createState() => _ForumCommunityState();
 }
 
 class _ForumCommunityState extends State<ForumCommunity> {
-  List<bool> _likedPosts = List.generate(5, (index) => false); // List to track liked state
+  final List<bool> _likedPosts = List.generate(5, (index) => false); // List to track liked state
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Column(
         children: [
           const SizedBox(height: 5,),
@@ -24,7 +23,7 @@ class _ForumCommunityState extends State<ForumCommunity> {
               itemCount: _likedPosts.length, // Use the length of likedPosts
               itemBuilder: (context, index) {
                 return Card(
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -32,22 +31,22 @@ class _ForumCommunityState extends State<ForumCommunity> {
                       children: [
                         Text(
                           'User ${index + 1}', // Placeholder for user name
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         // Use a random image from a placeholder API
                         Container(
                           height: 200, // Placeholder height for post image
                           color: Colors.grey[300], // Placeholder for image
                           alignment: Alignment.center,
-                          child: Text('Image', style: TextStyle(color: Colors.black54)),
+                          child: const Text('Image', style: TextStyle(color: Colors.black54)),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text('This is a caption for post ${index + 1}.'),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Row(
                           children: [
                             IconButton(
@@ -63,14 +62,14 @@ class _ForumCommunityState extends State<ForumCommunity> {
                               },
                             ),
                             IconButton(
-                              icon: Icon(Icons.comment),
+                              icon: const Icon(Icons.comment),
                               onPressed: () {
                                 // Add comment functionality here
                                 print('Commented on post ${index + 1}');
                               },
                             ),
                             IconButton(
-                              icon: Icon(Icons.share),
+                              icon: const Icon(Icons.share),
                               onPressed: () {
                                 // Add share functionality here
                                 print('Shared post ${index + 1}');
@@ -88,6 +87,7 @@ class _ForumCommunityState extends State<ForumCommunity> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: "AddForumButton",
         onPressed: () {
           showModalBottomSheet(
             context: context,
@@ -97,7 +97,7 @@ class _ForumCommunityState extends State<ForumCommunity> {
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom,
                 ),
-                child: Container(
+                child: const SizedBox(
                   height: 300, // Set height for the modal sheet
                   child: Center(child: Text("Add a new post")),
                 ),

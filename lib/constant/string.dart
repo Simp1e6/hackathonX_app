@@ -1,0 +1,1 @@
+const kHomeTitle = "Hungry Saver";

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'register.dart';
 import 'forget_password.dart';
-import 'main.dart'; // Import your main.dart for HomePage
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -9,17 +8,18 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
+        body: Center(
+      child: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-            'assets/logo.png', // Your image path
-            width: 300, // Adjust width as needed
-            height: 300, // Adjust height as needed
-          ),
-          const SizedBox(height: 20),
+              'assets/logo.png', // Your image path
+              width: 300, // Adjust width as needed
+              height: 300, // Adjust height as needed
+            ),
+            const SizedBox(height: 20),
             const Text(
               'Welcome,',
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
@@ -50,7 +50,8 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ForgetPasswordPage()),
+                    MaterialPageRoute(
+                        builder: (context) => const ForgetPasswordPage()),
                   );
                 },
                 child: const Text('Forgot your password? Recover'),
@@ -60,13 +61,11 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Navigate to the home page
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage(title: 'Hungry Saver')),
-                );
+                Navigator.pushReplacementNamed(context, '/home');
               },
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -82,7 +81,8 @@ class LoginPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const RegisterPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const RegisterPage()),
                     );
                   },
                   child: const Text('Sign up'),
@@ -92,6 +92,6 @@ class LoginPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }
