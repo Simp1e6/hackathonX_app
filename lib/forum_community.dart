@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_forum.dart';
 
 class ForumCommunity extends StatefulWidget {
   final String title;
@@ -89,20 +90,9 @@ class _ForumCommunityState extends State<ForumCommunity> {
       floatingActionButton: FloatingActionButton(
         heroTag: "AddForumButton",
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true, // Allows the sheet to take up more space
-            builder: (BuildContext context) {
-              return Padding(
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
-                ),
-                child: const SizedBox(
-                  height: 300, // Set height for the modal sheet
-                  child: Center(child: Text("Add a new post")),
-                ),
-              );
-            },
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddPostPage()),
           );
         },
         child: const Icon(Icons.add),
