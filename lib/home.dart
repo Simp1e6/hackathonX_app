@@ -107,7 +107,9 @@ class HomePage extends StatelessWidget {
             Row(
               children: [
                 // Claims Box
-                Expanded(
+                SizedBox(
+                  height: 135,
+                  width: 183  , // Adjust the width to match the rewards box
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -115,6 +117,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.restaurant, size: 40, color: Colors.black54),
                         SizedBox(height: 10),
