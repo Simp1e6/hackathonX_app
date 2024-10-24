@@ -8,13 +8,18 @@ class Map extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
       body: Center(
-        child: Text(
-          'This is the $title',
-          style: const TextStyle(fontSize: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Display the image from assets
+            Image.asset(
+              'assets/logo.png', // Ensure this file exists in the assets folder
+              width: 200,
+              height: 200,
+            ),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -27,7 +32,7 @@ class Map extends StatelessWidget {
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom,
                 ),
-                child: FoodForm(), // Separate widget to handle the form
+                child: DonationForm(), // Separate widget to handle the form
               );
             },
           );
@@ -38,12 +43,12 @@ class Map extends StatelessWidget {
   }
 }
 
-class FoodForm extends StatefulWidget {
+class DonationForm extends StatefulWidget {
   @override
-  _FoodFormState createState() => _FoodFormState();
+  _DonationFormState createState() => _DonationFormState();
 }
 
-class _FoodFormState extends State<FoodForm> {
+class _DonationFormState extends State<DonationForm> {
   final _formKey = GlobalKey<FormState>();
 
   // Controllers for form fields
@@ -62,6 +67,12 @@ class _FoodFormState extends State<FoodForm> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Form Title: Donation Form
+            const Text(
+              'Donation Form',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
             // Food Name
             TextFormField(
               controller: foodController,
@@ -132,8 +143,11 @@ class _FoodFormState extends State<FoodForm> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  // Form is valid, submit the form
-                  Navigator.pop(context); // Close the bottom sheet
+                  // Form is valid, keep the form open (no closing the sheet)
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                        content: Text('Form submitted successfully!')),
+                  );
                 }
               },
               child: const Text('Submit'),
