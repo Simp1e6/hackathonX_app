@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
 
-class Map extends StatelessWidget {
+class Map extends StatefulWidget {
   final String title;
 
   const Map({super.key, required this.title});
+
+  @override
+  _MapState createState() => _MapState();
+}
+
+class _MapState extends State<Map> {
+  double _scale = 1.0; // Default scale for image zoom
+
+  void _zoomIn() {
+    setState(() {
+      _scale += 0.1;
+    });
+  }
+
+  void _zoomOut() {
+    setState(() {
+      _scale = (_scale > 0.2) ? _scale - 0.1 : 0.1; // Minimum scale limit
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,32 +31,56 @@ class Map extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Display the image from assets
-            Image.asset(
-              'assets/logo.png', // Ensure this file exists in the assets folder
-              width: 200,
-              height: 200,
+            // Display the image from assets with scaling
+            Expanded(
+              child: Transform.scale(
+                scale: _scale,
+                child: Image.asset(
+                  'assets/maps.png', // Ensure this file exists in the assets folder
+                  fit: BoxFit.cover, // Make the image fit the screen
+                ),
+              ),
             ),
-            const SizedBox(height: 20),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true, // Allows the sheet to take up more space
-            builder: (BuildContext context) {
-              return Padding(
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
-                ),
-                child: DonationForm(), // Separate widget to handle the form
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Zoom In Button
+          FloatingActionButton(
+            heroTag: "zoomIn",
+            onPressed: _zoomIn,
+            child: const Icon(Icons.add),
+          ),
+          const SizedBox(height: 10),
+          // Zoom Out Button
+          FloatingActionButton(
+            heroTag: "zoomOut",
+            onPressed: _zoomOut,
+            child: const Icon(Icons.remove),
+          ),
+          const SizedBox(height: 10),
+          // Add Button to open the form
+          FloatingActionButton(
+            heroTag: "addForm",
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (BuildContext context) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom,
+                    ),
+                    child: DonationForm(), // Separate widget to handle the form
+                  );
+                },
               );
             },
-          );
-        },
-        child: const Icon(Icons.add),
+            child: const Icon(Icons.add_box),
+          ),
+        ],
       ),
     );
   }
