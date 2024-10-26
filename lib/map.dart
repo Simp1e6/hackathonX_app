@@ -87,6 +87,8 @@ class _MapState extends State<Map> {
 }
 
 class DonationForm extends StatefulWidget {
+  const DonationForm({super.key});
+
   @override
   _DonationFormState createState() => _DonationFormState();
 }

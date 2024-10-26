@@ -92,7 +92,7 @@ class _ForumCommunityState extends State<ForumCommunity> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddPostPage()),
+            MaterialPageRoute(builder: (context) => const AddPostPage()),
           );
         },
         child: const Icon(Icons.add),

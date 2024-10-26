@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'forum_community.dart';
+// import 'forum_community.dart';
 
 class AddPostPage extends StatelessWidget {
+  const AddPostPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Post'),
+        title: const Text('Add Post'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
@@ -16,42 +18,42 @@ class AddPostPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundImage: NetworkImage(
                         'https://freesvg.org/img/abstract-user-flat-4.png'),
                   ),
-                  SizedBox(width: 16),
-                  Text(
+                  const SizedBox(width: 16),
+                  const Text(
                     'ABC',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 200,),
+                  const SizedBox(width: 200,),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context); // Go back to the previous page
                     },
-                    child: Text('Post !'),
+                    child: const Text('Post !'),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 maxLines: 5,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Leave your comment here ...',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: () {},
-                icon: Icon(Icons.photo),
-                label: Text('Upload your photo'),
+                icon: const Icon(Icons.photo),
+                label: const Text('Upload your photo'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               
             ],
           ),
