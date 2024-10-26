@@ -1,9 +1,12 @@
 //import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathonX_app/constant/string.dart';
+import 'package:hackathonX_app/identitySelection.dart';
+import 'package:hackathonX_app/second_map.dart';
 import 'map.dart'; // Import your map page file
 import 'forum_community.dart'; // Import your forum community page file
 import 'profile.dart'; // Import your profile page file
+import 'identitySelection.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -16,11 +19,13 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   // List of widget pages to show
-  static const List<Widget> _pages = <Widget>[
-    HomePage(), // Custom HomePage widget
-    Map(title: 'Map'),
-    ForumCommunity(title: 'Forum Community'),
-    Profile(title: 'Profile Page'),
+  static final List<Widget> _pages = <Widget>[
+    const HomePage(), // Custom HomePage widget
+    IdentitySelectionPage(onDonateFoodPressed: () {  }, onFindFoodPressed: () {  }),
+    const Map(title: 'Map'),
+    const ForumCommunity(title: 'Forum Community'),
+    const Profile(title: 'Profile Page'),
+    // const Map(title: 'Map'),
   ];
 
   // This method is triggered when an item is tapped
@@ -32,6 +37,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> pages = <Widget>[
+      const HomePage(), // Custom HomePage widget
+      IdentitySelectionPage(
+        onDonateFoodPressed: () {
+          _onItemTapped(4); // Set the index to the Map page (index 2)
+        },
+        onFindFoodPressed: () {
+          _onItemTapped(5); // Set the index to the Map page (index 2)
+        },
+      ),
+      const ForumCommunity(title: 'Forum Community'),
+      const Profile(title: 'Profile Page'),
+      const Map(title: 'Map'),
+      const SecondMap(title: 'SecondMap'),
+
+    ];
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -53,10 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: IndexedStack(
         index: _selectedIndex,
-        children: _pages, // Display the respective page based on selected index
+        children: pages, // Display the respective page based on selected index
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex, // This will manage the selected tab
+        currentIndex: _selectedIndex == 4 || _selectedIndex == 5 ? 1 : _selectedIndex, // This will manage the selected tab
         onTap: _onItemTapped, // This handles the tap on items
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -75,6 +98,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
+          // BottomNavigationBarItem(
+          //   icon: SizedBox.shrink(),
+          //   label: '',
+          // ),
         ],
         selectedItemColor: Colors.blue, // Change color for the selected item
         unselectedItemColor: Colors.grey, // Color for the unselected items

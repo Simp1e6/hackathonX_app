@@ -10,6 +10,7 @@ class Map extends StatefulWidget {
 }
 
 class _MapState extends State<Map> {
+  
   double _scale = 1.0; // Default scale for image zoom
 
   void _zoomIn() {
@@ -73,7 +74,7 @@ class _MapState extends State<Map> {
                     padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).viewInsets.bottom,
                     ),
-                    child: DonationForm(), // Separate widget to handle the form
+                    child: const DonationForm(), // Separate widget to handle the form
                   );
                 },
               );
