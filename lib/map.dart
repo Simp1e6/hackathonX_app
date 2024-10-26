@@ -21,9 +21,18 @@ class _MapState extends State<Map> {
 
   void _zoomOut() {
     setState(() {
-      _scale = (_scale > 0.2) ? _scale - 0.1 : 0.1; // Minimum scale limit
+      _scale = (_scale > _initialScale) ? _scale - 0.1 : _initialScale; // Minimum scale limit
     });
   }
+
+  double _initialScale = 1.0;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _initialScale = _scale;
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -14,19 +14,50 @@ class IdentitySelectionPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            /*const Text(
               'What action you want to take?',
               style: TextStyle(fontSize: 24), // Adjust the font size as needed
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: onDonateFoodPressed, // Use the passed function here
-              child: const Text('Donate Food'),
+            const SizedBox(height: 20),*/
+            SizedBox(
+              width: 300,
+              height: 100,
+              child: ElevatedButton.icon(
+                onPressed: onDonateFoodPressed, // Use the passed function here
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                icon: const Icon(
+                    Icons.food_bank,
+                    size: 40,
+                ),
+                label: const Text(
+                  'Donate Food',
+                  style: TextStyle(fontSize: 30), // Adjust the font size as needed
+                ),
+              ),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: onFindFoodPressed, // Use the passed function here
-              child: const Text('Find Food'),
+            const SizedBox(height: 40),
+            SizedBox(
+              width: 300,
+              height: 100,
+              child: ElevatedButton.icon(
+                onPressed: onFindFoodPressed, // Use the passed function here
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                icon: const Icon(
+                  Icons.search,
+                  size: 40,),
+                label: const Text(
+                  'Search Food',
+                  style: TextStyle(fontSize: 30), // Adjust the font size as needed
+                ),
+              ),
             ),
           ],
         ),

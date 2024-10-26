@@ -21,8 +21,16 @@ class _SecondMapState extends State<SecondMap> {
 
   void _zoomOut() {
     setState(() {
-      _scale = (_scale > 0.2) ? _scale - 0.1 : 0.1; // Minimum scale limit
+      _scale = (_scale > _initialScale) ? _scale - 0.1 : _initialScale; // Minimum scale limit
     });
+  }
+
+  double _initialScale = 1.0;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _initialScale = _scale;
   }
 
   @override
@@ -70,10 +78,70 @@ class _SecondMapState extends State<SecondMap> {
                 MaterialPageRoute(
                   builder: (context) => Scaffold(
                     appBar: AppBar(
-                      title: Text('Blank Page'),
+                      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+                      title: Text('Available Nearby Donations'),
                     ),
                     body: Center(
-                      child: Text('This is a blank page'),
+                      child: ListView(
+                        padding: const EdgeInsets.all(16.0),
+                        children: List.generate(5, (index) {
+                          return Card(
+                            elevation: 4,
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 500,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    'Food Name: Food ${index + 1}',
+                                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Quantity Available: ${10 * (index + 1)}',
+                                    style: const TextStyle(fontSize: 14),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Organization: Restaurant ${String.fromCharCode(65 + index)}',
+                                    style: const TextStyle(fontSize: 14),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Address: ${index + 123} Main St, Springfield',
+                                    style: const TextStyle(fontSize: 14),
+                                  ),
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Contact: 123-456-78${90 + index}',
+                                    style: const TextStyle(fontSize: 14),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        // Implement apply action
+                                      },
+                                      child: const Text('Apply'),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
                     ),
                   ),
                 ),
