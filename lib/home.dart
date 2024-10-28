@@ -255,8 +255,8 @@ class HomePage extends StatelessWidget {
                     child: Row( // Using Row to place image beside text
                       children: [
                         // Image widget beside the description
-                        Image.network(
-                          'https://placehold.co/50/png', // Replace with your image URL
+                        Image.asset(
+                          'assets/newsIcon.png', // Replace with your image URL
                           width: 50, // Set the width of the image
                           height: 50, // Set the height of the image
                           fit: BoxFit.cover, // Maintain aspect ratio
