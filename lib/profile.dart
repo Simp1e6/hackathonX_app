@@ -18,10 +18,11 @@ class Profile extends StatelessWidget {
                 children: [
                   const SizedBox(height: 20), // Extra spacing to move content down below the icon
                   Image.asset(
-                    'profile.png',
+                    'assets/profile.png',
                     width: 150,
                     height: 150,
                   ),
+                  SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       //print('Edit is pressed');
@@ -43,7 +44,7 @@ class Profile extends StatelessWidget {
                       SizedBox(height: 50), // Spacing at the top
                       ListTile(
                         leading: Icon(Icons.person, color: Color.fromARGB(255, 214, 174, 88)),
-                        title: Text('ABCDE'),
+                        title: Text('ABC'),
                       ),
                       Divider(),
                       ListTile(
