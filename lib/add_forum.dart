@@ -30,7 +30,7 @@ class AddPostPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(width: 200,),
+                  const SizedBox(width: 195),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context); // Go back to the previous page

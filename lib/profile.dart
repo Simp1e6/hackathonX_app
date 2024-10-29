@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'login.dart'; // Import login page
 
 class Profile extends StatelessWidget {
   final String title;
@@ -12,80 +11,81 @@ class Profile extends StatelessWidget {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16.0), // Padding to position other content below the AppBar
+            padding: const EdgeInsets.only(top: 16.0),
             child: Center(
-              child: Column(
-                children: [
-                  const SizedBox(height: 20), // Extra spacing to move content down below the icon
-                  Image.asset(
-                    'assets/profile.png',
-                    width: 150,
-                    height: 150,
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      //print('Edit is pressed');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12), // Rounded corners
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      'assets/profile.png',
+                      width: 150,
+                      height: 150,
+                    ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        //print('Edit is pressed');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text('Edit'),
+                    ),
+                    const SizedBox(height: 10),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 50),
+                          ListTile(
+                            leading: Icon(Icons.person, color: Color.fromARGB(255, 214, 174, 88)),
+                            title: Text('ABC'),
+                          ),
+                          Divider(),
+                          ListTile(
+                            leading: Icon(Icons.phone, color: Color.fromARGB(255, 214, 174, 88)),
+                            title: Text('012-3456789'),
+                          ),
+                          Divider(),
+                          ListTile(
+                            leading: Icon(Icons.email, color: Color.fromARGB(255, 214, 174, 88)),
+                            title: Text('abc123@gmail.com'),
+                          ),
+                          Divider(),
+                          ListTile(
+                            leading: Icon(Icons.other_houses_rounded, color: Color.fromARGB(255, 214, 174, 88)),
+                            title: Text('123, Jalan Universiti, Taman Universiti, Malaysia, Bumi'),
+                          ),
+                          Divider(),
+                          ListTile(
+                            leading: Icon(Icons.lock, color: Color.fromARGB(255, 214, 174, 88)),
+                            title: Text('********'),
+                          ),
+                        ],
                       ),
                     ),
-                    child: const Text('Edit'),
-                  ),
-                  const SizedBox(height: 10),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 50), // Spacing at the top
-                      ListTile(
-                        leading: Icon(Icons.person, color: Color.fromARGB(255, 214, 174, 88)),
-                        title: Text('ABC'),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/login');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+                        backgroundColor: const Color.fromARGB(255, 238, 208, 118),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.phone, color: Color.fromARGB(255, 214, 174, 88)),
-                        title: Text('012-3456789'),
-                      ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.email, color: Color.fromARGB(255, 214, 174, 88)),
-                        title: Text('abc123@gmail.com'),
-                      ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.other_houses_rounded, color: Color.fromARGB(255, 214, 174, 88)),
-                        title: Text('123, Jalan Universiti, Taman Universiti, Malaysia, Bumi'),
-                      ),
-                      Divider(),
-                      ListTile(
-                        leading: Icon(Icons.lock, color: Color.fromARGB(255, 214, 174, 88)),
-                        title: Text('********'),
-                      ),
-                      ],
+                      child: const Text('Log out'),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  //const Spacer(flex: 1), // Pushes the logout button to the bottom
-                  ElevatedButton(
-                    onPressed: () {
-                      // Log out and navigate to the login page
-                      Navigator.pushReplacementNamed(context, '/login');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
-                      backgroundColor: const Color.fromARGB(255, 238, 208, 118),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12), // Rounded corners
-                      ),
-                    ),
-                    child: const Text('Log out'),
-                  ),
-                ],
+                    SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
           ),
@@ -94,3 +94,4 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
