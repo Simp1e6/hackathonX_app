@@ -88,7 +88,7 @@ class _ForumCommunityState extends State<ForumCommunity> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        heroTag: "AddForumButton",
+        heroTag: "AddForum  Button",
         onPressed: () {
           Navigator.push(
             context,

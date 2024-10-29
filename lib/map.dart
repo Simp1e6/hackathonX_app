@@ -59,21 +59,21 @@ class _MapState extends State<Map> {
         children: [
           // Zoom In Button
           FloatingActionButton(
-            heroTag: "zoomIn",
+            heroTag: "zoomInButton",
             onPressed: _zoomIn,
             child: const Icon(Icons.add),
           ),
           const SizedBox(height: 10),
           // Zoom Out Button
           FloatingActionButton(
-            heroTag: "zoomOut",
+            heroTag: "zoomOutButton",
             onPressed: _zoomOut,
             child: const Icon(Icons.remove),
           ),
           const SizedBox(height: 10),
           // Add Button to open the form
           FloatingActionButton(
-            heroTag: "addForm",
+            heroTag: "addFormButton",
             onPressed: () {
               showModalBottomSheet(
                 context: context,
