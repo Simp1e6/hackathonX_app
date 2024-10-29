@@ -22,7 +22,7 @@ class Profile extends StatelessWidget {
                     width: 150,
                     height: 150,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       //print('Edit is pressed');

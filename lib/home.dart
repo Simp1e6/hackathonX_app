@@ -1,4 +1,3 @@
-//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathonX_app/constant/string.dart';
 import 'package:hackathonX_app/identitySelection.dart';

@@ -79,7 +79,7 @@ class _SecondMapState extends State<SecondMap> {
                   builder: (context) => Scaffold(
                     appBar: AppBar(
                       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                      title: Text('Available Nearby Donations'),
+                      title: const Text('Available Nearby Donations'),
                     ),
                     body: Center(
                       child: ListView(
