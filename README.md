@@ -1,6 +1,6 @@
 # HackathonX_app
 
-A new Flutter project.
+Hungry Saver is an innovative platform designed to combat food insecurity and reduce waste, directly supporting the United Nations Sustainable Development Goal 2: Zero Hunger.
 
 ## Getting Started
 
